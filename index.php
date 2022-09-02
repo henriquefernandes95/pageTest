@@ -1,7 +1,7 @@
 <!--Obtido da referência https://www.tutorialrepublic.com/php-tutorial/php-mysql-crud-application.php
 Configurado e alterado-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -32,28 +32,47 @@ Configurado e alterado-->
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
                         <h2 class="pull-left">Guia</h2>
-                        <a href="content.php" class="btn btn-success pull-right"><i class="fa fa-list"></i> Listar conteúdos</a>
+                        <a href="listsecao.php" class="btn btn-success pull-right"><i class="fa fa-list"></i> Listar seções</a>
+                        <a href="listconteudo.php" class="btn btn-success pull-right"><i class="fa fa-list"></i> Listar conteúdos</a>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM secao";
-                    $sql2 = "SELECT * FROM conteudo";
+                    $sql = "SELECT * FROM secao order by ordem";
+                    
                     if($result = mysqli_query($link, $sql)){
                         
                         if(mysqli_num_rows($result) > 0){
-                            $result2 = mysqli_query($link, $sql2);
+                            #$result2 = mysqli_query($link, $sql2);
                             #$row = mysqli_fetch_array($result);
                             while($row = mysqli_fetch_array($result)){
                                 #$row2 = mysqli_fetch_array($result2);
-                                    #echo "<h1>Name</h1>";
-                                    echo "<h1>" . $row['nome'] . "</h1>";
-                                    while($row2 = mysqli_fetch_array($result2)){
-                                        echo "<h1>" . $row2['titulo'] . "</h1>";
-                                        echo "<th>" . $row2['descricao'] . "</th>";
-                                    }
+                                #echo "<h1>Name</h1>";
+                                echo "<h1>" . $row['nome'] . "</h1>";
+                                
+                            
+
+                                $sql2 = "SELECT * FROM conteudo WHERE secao_index= ?";
+
+                                $stmt = mysqli_prepare($link, $sql2);
+                                $param_id = $row['id'];
+                                mysqli_stmt_bind_param($stmt, "i", $param_id);
+                                mysqli_stmt_execute($stmt);
+                                $result2 = mysqli_stmt_get_result($stmt); 
+                                #$row2 = mysqli_fetch_array($result2);
+                                //echo "<h1>" . $row2['titulo'] . "</h1>";
+                                //echo "<th>" . $row2['descricao'] . "</th>";   
+                                // Set parameters
+                                
+                                while($row2 = mysqli_fetch_array($result2)){
+                                    echo "<h1>" . $row2['titulo'] . "</h1>";
+                                    echo "<th>" . $row2['descricao'] . "</th>";
+                                    #$sql2 = "SELECT * FROM conteudo ";
+                                }
+                                
+                                mysqli_free_result($result2);
                             }
                         }
                               

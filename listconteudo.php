@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Listagem Conteúdo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
                         <h2 class="pull-left">Conteúdos</h2>
-                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Adicionar nova seção</a>
+                        <a href="createconteudo.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Adicionar novo conteúdo</a>
                         <a href="index.php" class="btn btn-primary pull-right"><i class="fa fa-home"></i> Página Principal</a>
                     </div>
                     <?php
@@ -38,15 +38,16 @@
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM secao";
+                    $sql = "SELECT * FROM conteudo";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>id</th>";
-                                        echo "<th>Ordem</th>";
-                                        echo "<th>Nome</th>";
+                                        echo "<th>Titulo</th>";
+                                        echo "<th>Descrição</th>";
+                                        echo "<th>Seção</th>";
                                         echo "<th>Opções</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -54,12 +55,13 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $row['ordem'] . "</td>";
-                                        echo "<td>" . $row['nome'] . "</td>";
+                                        echo "<td>" . $row['titulo'] . "</td>";
+                                        echo "<td>" . $row['descricao'] . "</td>";
+                                        echo "<td>" . $row['secao_index'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="Explorar" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                            echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Alterar" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="delete.php?id='. $row['id'] .'" title="Excluir" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '<a href="readconteudo.php?id='. $row['id'] .'" class="mr-3" title="Explorar" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                            echo '<a href="updateconteudo.php?id='. $row['id'] .'" class="mr-3" title="Alterar" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="deleteconteudo.php?id='. $row['id'] .'" title="Excluir" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
