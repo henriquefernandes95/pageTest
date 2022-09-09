@@ -50,7 +50,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 ?>
 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Explorar Conteúdo</title>
@@ -63,7 +63,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

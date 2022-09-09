@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Listagem Seção</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -24,12 +24,12 @@
     </script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Conteúdos</h2>
+                        <h2 class="pull-left">Seções</h2>
                         <a href="createsecao.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Adicionar nova seção</a>
                         <a href="index.php" class="btn btn-primary pull-right"><i class="fa fa-home"></i> Página Principal</a>
                     </div>

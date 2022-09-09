@@ -117,7 +117,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         mysqli_stmt_close($stmt);
         
         // Close connection
-        mysqli_close($link);
+        #mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
         header("location: error.php");
@@ -140,26 +140,55 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script>
+                    <script type="text/javascript">
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                    </script>
                     <h2 class="mt-5">Atualiza Registro</h2>
                     <p>Edite e confirme as alterações realizadas.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label>titulo</label>
-                            <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <input type="text" name="titulo" class="form-control" value="<#?php echo $titulo; ?>">
                             
-                        </div>
-                        <div class="form-group">
+                        </div>-->
+                        <h1>Título</h1>
+                        <textarea name="titulo" cols="40"><?php echo $titulo;?></textarea><br>
+                        <!--<div class="form-group">
                             <label>descricao</label>
-                            <input type="text" name="descricao" class="form-control " value="<?php echo $descricao; ?>">
-                        </div>
-                        <div class="form-group">
+                            <input type="text" name="descricao" class="form-control " value="<#?php echo $descricao; ?>">
+                        </div>-->
+                        <h1>Descrição</h1>
+                        <textarea name="descricao" cols="40"><?php echo $descricao;?></textarea><br>
+                        <!--<div class="form-group">
                             <label>Seção</label>
-                            <input type="integer" name="secao" class="form-control " value="<?php echo $secao; ?>">
-                        </div>
+                            <input type="integer" name="secao" class="form-control " value="<#?php echo $secao; ?>">
+                        </div>-->
+                        <?php
+                                $sql0 = "SELECT * FROM secao";
+                                $stmt0 = mysqli_prepare($link, $sql0);
+                                mysqli_stmt_execute($stmt0);
+                                $result0 = mysqli_stmt_get_result($stmt0);
+                                
+                        ?>
+                        <p>     
+                        <select name="secao">
+                            
+                            <?php 
+                                
+                                echo "<option value=".$secao.">".$row1[$secao]."</option>";
+                                while ($row0 = mysqli_fetch_array($result0)) {
+                                    echo "<option value='".$row0[0]."'>".$row0[2]."</option>";
+                                    #echo $row0[0];
+                                    #echo $row0[$row0[0]];
+                                }
+                            ?>    
+                        </select>
+                        </p> 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>

@@ -3,6 +3,7 @@ Configurado e alterado-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -26,11 +27,12 @@ Configurado e alterado-->
     </script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
+                    <img src="https://lattesdata.cnpq.br/logos/1/logo_lattesdata_200.png" alt="LattesData - CNPQ logo" style="user-select: auto;">
                         <h2 class="pull-left">Guia</h2>
                         <a href="listsecao.php" class="btn btn-success pull-right"><i class="fa fa-list"></i> Listar seções</a>
                         <a href="listconteudo.php" class="btn btn-success pull-right"><i class="fa fa-list"></i> Listar conteúdos</a>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Error</title>
+    <title>Erro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
@@ -16,8 +16,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Invalid Request</h2>
-                    <div class="alert alert-danger">Sorry, you've made an invalid request. Please <a href="index.php" class="alert-link">go back</a> and try again.</div>
+                    <h2 class="mt-5 mb-3">Requerimento Inválido</h2>
+                    <div class="alert alert-danger">Desculpe, requerimento inválido. Por favor <a href="index.php" class="alert-link">retorne</a> e tente novamente.</div>
                 </div>
             </div>        
         </div>

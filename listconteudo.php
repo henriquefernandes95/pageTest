@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Listagem Conteúdo</title>
@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

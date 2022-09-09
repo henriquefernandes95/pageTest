@@ -8,34 +8,7 @@ $ordem_err = $nome_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate name
-    /*$input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
-    } else{
-        $name = $input_name;
-    }
     
-    // Validate address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
-    } else{
-        $address = $input_address;
-    }
-    
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
-    } else{
-        $salary = $input_salary;
-    }
-    */
 
     
     $ordem = trim($_POST["ordem"]);
@@ -62,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 exit();
             } else{
                 echo $results;
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Erro! A operação não foi realizada.";
             }
         }
          
@@ -76,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Adicionar Seção</title>
@@ -89,26 +62,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Adicionar Seção</h2>
                     <p>Preencher para inserir nova seção no banco.</p>
+                    <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
+                    <script type="text/javascript">
+                    
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                    </script>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>Ordem</label>
                             <input type="text" name="ordem" class="form-control" value="<?php echo $ordem; ?>">
                            
                         </div>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" name="nome" class="form-control "value="<?php echo $nome; ?>">
-                            
-                        </div>
+                        
+                        <h1>Nome</h1>
+                        <textarea name="nome" cols="40"><?php echo $nome;?></textarea><br>
                         
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancela</a>
                     </form>
                 </div>
             </div>        

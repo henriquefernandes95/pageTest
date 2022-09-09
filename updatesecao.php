@@ -137,22 +137,24 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Update Record</h2>
                     <p>Please edit the input values and submit to update the employee record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                    <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script>
+                    <script type="text/javascript">
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                    </script>
                         <div class="form-group">
                             <label>Ordem</label>
                             <input type="text" name="ordem" class="form-control" value="<?php echo $ordem; ?>">
                             
                         </div>
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" name="nome" class="form-control " value="<?php echo $nome; ?>">
-                        </div>
+                        <h1>Nome</h1>
+                        <textarea name="nome" cols="40"><?php echo $nome;?></textarea><br>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
